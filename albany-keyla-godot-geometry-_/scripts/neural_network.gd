@@ -8,7 +8,8 @@ var output_size: int
 var weights_input_hidden: PackedFloat32Array
 var weights_hidden_output: PackedFloat32Array
 
-func _init(_input_size, _hidden_size, _output_size):
+
+func _init(_input_size: int, _hidden_size: int, _output_size: int):
 	input_size = _input_size
 	hidden_size = _hidden_size
 	output_size = _output_size
@@ -47,9 +48,9 @@ func forward(input_array: PackedFloat32Array) -> float:
 	return output > 0.5
 
 func predict(sensor_data: Dictionary) -> bool:
-	var input_array = PackedFloat32Array([sensor_data["Distance_to_Obstacle"], (1.0 if sensor_data["is_colliding_with_orb"] else 0.0), sensor_data["Current_Speed"]])
+	var input_array = PackedFloat32Array([
+		sensor_data["Distance_to_Obstacle"], 
+		(1.0 if sensor_data["is_colliding_with_orb"] else 0.0), 
+		sensor_data["Current_Speed"]
+	])
 	return forward(input_array)
-		
-		
-	
-	

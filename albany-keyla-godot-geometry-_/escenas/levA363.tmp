@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d3hvtp6arwahf" path="res://objetos/spike.tscn" id="4_5swna"]
 [ext_resource type="PackedScene" uid="uid://loyigftrb5b4" path="res://objetos/ground.tscn" id="5_2qwf6"]
 [ext_resource type="PackedScene" uid="uid://bn6tkytyovluj" path="res://objetos/next_level.tscn" id="6_c7kfi"]
-[ext_resource type="PackedScene" uid="uid://di3v4fedpihed" path="res://escenas/neural_network.tscn" id="7_usdli"]
+[ext_resource type="PackedScene" uid="uid://di3v4fedpihed" path="res://neural_network.tscn" id="7_usdli"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -15,12 +15,6 @@ position = Vector2(10968, -913)
 scale = Vector2(5.8474, 2.55645)
 texture = ExtResource("1_naqk4")
 metadata/_edit_lock_ = true
-
-[node name="DistanceLabel" type="Label" parent="."]
-offset_left = 37.0
-offset_top = 344.0
-offset_right = 77.0
-offset_bottom = 367.0
 
 [node name="jugador" parent="." instance=ExtResource("2_srwmp")]
 position = Vector2(64, 622)
@@ -37,8 +31,6 @@ drag_bottom_margin = 0.4
 editor_draw_drag_margin = true
 
 [node name="RayCast2D" type="RayCast2D" parent="jugador"]
-target_position = Vector2(302, 31)
-collide_with_areas = true
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("3_4c5k3")]
 position = Vector2(1834, 645)

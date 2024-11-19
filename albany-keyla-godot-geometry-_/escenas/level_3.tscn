@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cg0faefdx80vm" path="res://objetos/trampolines.tscn" id="7_3cqx5"]
 [ext_resource type="PackedScene" uid="uid://dn4a1a0pttdiw" path="res://objetos/portals.tscn" id="8_ep32e"]
 [ext_resource type="PackedScene" uid="uid://bn6tkytyovluj" path="res://objetos/next_level.tscn" id="9_wynju"]
-[ext_resource type="PackedScene" uid="uid://di3v4fedpihed" path="res://neural_network.tscn" id="10_l73vc"]
+[ext_resource type="PackedScene" uid="uid://di3v4fedpihed" path="res://escenas/neural_network.tscn" id="10_l73vc"]
 
 [node name="level_3" type="Node2D"]
 

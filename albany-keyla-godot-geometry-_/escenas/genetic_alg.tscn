@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://caiflevtw0p30"]
+
+[ext_resource type="Script" path="res://scripts/genetic_alg.gd" id="1_157sf"]
+
+[node name="Genetic_Alg" type="Node"]
+script = ExtResource("1_157sf")

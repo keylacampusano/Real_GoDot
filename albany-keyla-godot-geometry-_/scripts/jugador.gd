@@ -1,26 +1,29 @@
 extends CharacterBody2D
 
 var SPEED = 20000.0
-var JUMP_VELOCITY = -450.0
-var rotacion = 500
+var JUMP_VELOCITY = -1000.0
+var rotacion = 400
 
 var isOrbe = false
 var fuerzaorbe = 0
 var canInvert = false
 var isUfo = false
 
-var gravity = 5000
+var gravity = 5000.0
 
 var neural_network = NeuralNetwork.new(3, 5, 1)
+var font = preload("res://new_font_variation.tres")
 
+@onready var distance_label = $"../DistanceLabel"
 
 func _ready() -> void:
 	$RayCast2D.enabled = true
+	set_process(true)
 
 func _physics_process(delta: float) -> void:
 	var sensor_data = get_sensor_info()
 	var action = neural_network.predict(sensor_data)
-	print("Sensor Data: ", sensor_data) # Print sensor data for debugging 
+	#print("Sensor Data: ", sensor_data) # Print sensor data for debugging 
 	print("Neural Network Output: ", action)
 
 	# Add the gravity.
@@ -34,9 +37,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			$Sprite2D.rotation_degrees -= modulo
 	
-	if action:
-		if isUfo or is_on_floor():
-			velocity.y = JUMP_VELOCITY
+	if action and (isUfo or is_on_floor()):
+		velocity.y = JUMP_VELOCITY
 	# controla que el jugador se mueva solo a la derecha
 	velocity.x = SPEED * delta
 	
@@ -50,12 +52,26 @@ func _physics_process(delta: float) -> void:
 	print("Velocity: ", velocity)
 	move_and_slide()
 	print("Position: ", position)
+	queue_redraw()
 	
 func _draw() -> void:
 	var ray_cast = $RayCast2D
 	if ray_cast.is_colliding():
-		draw_line(position, ray_cast.get_collision_point(), Color(1, 0, 0), 2)
+		var collision_point = ray_cast.get_collision_point()
+		draw_line(global_position, collision_point, Color(1, 0, 0), 2)
+		
+		var distance = global_position.distance_to(collision_point)
+		draw_string(font, Vector2(10,10), "Distance: %.2f" % distance)
+		print("Distamce to Obstacle: ", distance)
 	
+	
+func _process(delta: float) -> void:
+	var ray_cast = $RayCast2D
+	if ray_cast.is_colliding():
+		var collision_point = ray_cast.get_collision_point()
+		var distance = global_position.distance_to(collision_point)
+		$"../DistanceLabel".text = "Distance: %.2f" % distance
+
 func get_sensor_info() -> Dictionary:
 	var sensor_data = {
 		"Distance_to_Obstacle": check_distance_to_obstacle(),

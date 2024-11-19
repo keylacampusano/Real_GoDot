@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d3hvtp6arwahf" path="res://objetos/spike.tscn" id="5_wkfky"]
 [ext_resource type="PackedScene" uid="uid://cd0ss6d8vay36" path="res://objetos/objeto_bloque.tscn" id="6_eqko8"]
 [ext_resource type="PackedScene" uid="uid://bn6tkytyovluj" path="res://objetos/next_level.tscn" id="7_5oqjn"]
-[ext_resource type="PackedScene" uid="uid://di3v4fedpihed" path="res://neural_network.tscn" id="8_x3723"]
+[ext_resource type="PackedScene" uid="uid://di3v4fedpihed" path="res://escenas/neural_network.tscn" id="8_x3723"]
 
 [node name="level_2" type="Node2D"]
 
